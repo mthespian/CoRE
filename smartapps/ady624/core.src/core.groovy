@@ -191,7 +191,7 @@ def pageDeleteVariable(params) {
 		if (var != null) {
 			section() {
 				deleteVariable(var)
-				paragraph "Variable {$var} was successfully deleted.\n\nPlease tap < or Done to continue.", title: "Success", required: false
+				paragraph "Variable {$var} was successfully deleted.\n\nPlease tap < or Save to continue.", title: "Success", required: false
 			}
 		} else {
 			section() {
@@ -262,9 +262,9 @@ private pageInitializeDashboard() {
 	dynamicPage(name: "pageInitializeDashboard", title: "") {
 		section() {
 			if (success) {
-				paragraph "Success! Your CoRE dashboard is now enabled. Tap Done to continue", required: false
+				paragraph "Success! Your CoRE dashboard is now enabled. Tap Save to continue", required: false
 			} else {
-				paragraph "Please go to your SmartThings IDE, select the My SmartApps section, click the 'Edit Properties' button of the CoRE app, open the OAuth section and click the 'Enable OAuth in Smart App' button. Click the Update button to finish.\n\nOnce finished, tap Done and try again.", title: "Please enable OAuth for CoRE", required: true, state: null
+				paragraph "Please go to your SmartThings IDE, select the My SmartApps section, click the 'Edit Properties' button of the CoRE app, open the OAuth section and click the 'Enable OAuth in Smart App' button. Click the Update button to finish.\n\nOnce finished, tap Save and try again.", title: "Please enable OAuth for CoRE", required: true, state: null
 			}
 		}
 	}
@@ -364,7 +364,7 @@ def pageDashboardTap(params) {
 			input "tapPistons${tapId}", "enum", title: "Pistons", options: listPistons(), description: "Select the pistons to be executed when tapped", required: false, multiple: true
 		}
 		section("") {
-			paragraph "NOTE: To delete this dashboard tap, clear its name and list of pistons and then tap Done"
+			paragraph "NOTE: To delete this dashboard tap, clear its name and list of pistons and then tap Save"
 		}
 	}
 }
@@ -1333,7 +1333,7 @@ def pageCondition(params) {
 					}
 				}
 				section() {
-					paragraph (capability && capability.virtualDevice ? "NOTE: To delete this condition, unselect the ${capability.display} option from the Capability input above and tap Done" : "NOTE: To delete this condition, simply remove all the devices from the Device list above and tap Done")
+					paragraph (capability && capability.virtualDevice ? "NOTE: To delete this condition, unselect the ${capability.display} option from the Capability input above and tap Save" : "NOTE: To delete this condition, simply remove all the devices from the Device list above and tap Save")
 				}
 
 				section(title: "Required data - do not change", hideable: true, hidden: true) {
@@ -1766,7 +1766,7 @@ def pageActionDevices(params) {
 		}
 		if (caps.size()) {
 			section() {
-				paragraph "Please select devices from the list${caps.size() > 1 ? "s" : ""} below. When done, please tap the Done to continue"
+				paragraph "Please select devices from the list${caps.size() > 1 ? "s" : ""} below. When done, please tap Save to continue"
 			}
 			for(cap in caps) {
 				section() {
@@ -1932,7 +1932,7 @@ def pageRebuild() {
 			rebuildPiston()
 			configApp()
 			state.run = "config"
-			paragraph "Rebuilding is now finished. Please tap Done to go back."
+			paragraph "Rebuilding is now finished. Please tap Save to go back."
 		}
 	}
 }
@@ -1964,7 +1964,7 @@ def pageInitializedVariable() {
 			def val = settings.varValue
 			if ((var != null) && (val != null)) {
 				setVariable(var, val)
-				paragraph "Variable {$var} successfully initialized to value '$val'.\n\nPlease tap < or Done to continue.", title: "Success"
+				paragraph "Variable {$var} successfully initialized to value '$val'.\n\nPlease tap < or Save to continue.", title: "Success"
 			}
 		}
 	}
